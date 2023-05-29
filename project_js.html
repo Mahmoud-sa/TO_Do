@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+
+html, body {
+    width: 50%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 400px;
+}
+
+#inputField {
+    width: 300px;
+    height: 46px;
+    border-width: 0;
+    border: 1px solid black;
+    outline: none;
+     font-size: 25px;  
+    vertical-align: middle;
+}
+
+#addToDo {
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    vertical-align: middle;
+    font-size: 30px;
+}
+
+.paragraph-styling {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.to-dos {
+    margin-top: 25px;
+}
+    </style>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div class="container">
+        <input id="inputField" type="text"><button id="addToDo">+</button>
+        <div class="to-dos" id="toDoContainer"> </div>
+    </div>
+</body>
+</html>
+
+ <script>
+    var addToDoButton = document.getElementById('addToDo');
+    var toDoContainer = document.getElementById('toDoContainer');
+    var inputField = document.getElementById('inputField');
+
+addToDoButton.addEventListener('click', function(){
+    var paragraph = document.createElement('p');
+   toDoContainer.appendChild(paragraph);
+  paragraph.innerText = inputField.value;
+  inputField.value = "";
+    paragraph.classList.add('paragraph-styling');
+  
+
+    paragraph.addEventListener('click', function(){
+       paragraph.style.textDecoration = "line-through";
+    })
+    paragraph.addEventListener('dblclick', function(){
+        toDoContainer.removeChild(paragraph);
+    })
+})
+
+    </script>
+</body>
+</html>
